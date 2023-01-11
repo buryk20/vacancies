@@ -1,0 +1,373 @@
+// mixins and extends
+%borderCoopLs {
+	border: $borderGreen;
+	border-radius: 8px;
+}
+
+@mixin fontBannerTitleLs($weight: 500) {
+	font-size: 48px;
+	line-height: 46px;
+	font-weight: $weight;
+	text-transform: uppercase;
+}
+
+@mixin fontTitleLs($weight: 700) {
+	font-size: 36px;
+	line-height: 42px;
+	font-weight: $weight;
+}
+
+@mixin fontTitleMobLs($weight: 500) {
+	font-size: 28px;
+	line-height: 46px;
+	font-weight: $weight;
+}
+
+@mixin fontBlockMob {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+@mixin fontTextLs {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+@mixin font16Ls {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+%buttonLs {
+    border-radius: 6px;
+    background-color: $color-main;
+    color: $colorWhite;
+    @include fontBig;
+    padding: 8px 16px;
+}
+
+%flexColCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+%flexSbCenter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+%flexCenterCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%margAuto {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+%padd {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+%boxContainerLs {
+    border-radius: 8px;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    background-color: $colorWhite;
+}
+
+%dotGreenLs {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: $colorCard;
+    width: 13px;
+    height: 13px;
+}
+
+@mixin paddMob {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+@mixin _1376 {
+	@media (max-width: $smScreenWidth) {
+		@content;
+	}
+}
+
+@mixin _1080 {
+    @media (max-width: $smallestScreenWidth) {
+		@content;
+	}
+}
+
+@mixin _960 {
+    @media (max-width: $bigMobileWidth) {
+		@content;
+	}
+}
+
+@mixin _680 {
+    @media (max-width: $mobileWidth) {
+		@content;
+	}
+}
+
+
+
+
+// main style
+.vacancy-br {
+   font-family: 'Roboto', sans-serif;
+   color: $color-new-grey;
+}
+
+.vacancy-banner-br {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+    @include _680 {
+        margin-bottom: 16px;
+    }
+}
+
+.vacancy-banner-br {
+
+
+    &__wrp {
+        position: relative;
+        @extend %padd;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: 560px;
+
+        @include _680 {
+            height: 213px;
+        }
+    }
+    &__img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        @include _680 {
+            // display: none;
+        }
+    }
+    &__img-mob {
+        display: none;
+        @include _680 {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+    }
+    &__info-wrp {
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        display: flex;
+        justify-content: flex-start;
+        @extend %margAuto;
+    }
+    &__info-container {
+        max-width: 700px;
+        text-align: end;
+    }
+    &__info-title {
+        margin-bottom: 64px;
+
+        @include fontBannerTitleLs;
+        color: $colorWhite;
+        margin-bottom: 24px;
+
+        @include _960 {
+            font-size: 24px;
+        }
+    }
+    &__info-title-mob {
+        display: none;
+        @include _680 {
+            display: block;
+            @include fontTitleMobLs;
+            text-transform: uppercase;
+            text-align: center;
+        }
+    }
+    &__info-text {
+        @include fontMid;
+        color: $colorWhite;
+    }
+}
+
+.vacancy-sentence {
+    max-width: 1440px;
+    width: 100%;
+
+    padding: 0 16px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    &__item-wrp {
+        padding: 16px;
+
+        box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        background-color: #ffffff;
+    }
+
+    &__item-wrp + &__item-wrp {
+        margin-top: 16px;
+    }
+
+    &__item-text {
+        max-width: 456px;
+        margin-bottom: 16px;
+
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 140%;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+
+        @include _960 {
+            max-width: 100%;
+            font-size: 20px;
+            text-transform: inherit;
+        }
+
+    }
+
+    &__item-text-data {
+        margin-bottom: 16px;
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: 0.02em;
+        color: #1F1F1F;
+    }
+
+    &__item-tel-text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: 0.02em;
+        color: #009B3E;
+    }
+
+    &__item-tel-text-mob {
+        @include _960 {
+            display: none;
+        }
+    }
+
+    &__item-title-tel-wrp {
+        margin-bottom: 24px;
+
+        display: flex;
+        justify-content: space-between;
+
+        @include _960 {
+            flex-direction: column;
+        }
+    }
+
+    &__item-title-wrp {
+        @include _960 {
+            margin-bottom: 32px;
+        }
+    }
+
+
+    &__item-tel-wrp {
+        height: 52px;
+        padding: 0 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 1px solid #8A8A8A;
+        border-radius: 8px;
+    }
+
+    &__item-tel-link-wrp {
+        display: flex;
+        align-items: center;
+
+        gap: 24px;
+    }
+
+    &__item-price {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 140%;
+        letter-spacing: 0.02em;
+        color: #009B3E;
+    }
+
+    &__item-title-data-wrp {
+        @include _960 {
+            gap: 16px;
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+    }
+
+    &__line {
+        width: 100%;
+        height: 1px;
+
+        margin-bottom: 24px;
+
+        background-color: #8A8A8A;
+    }
+
+    &__text-header {
+        margin-bottom: 16px;
+
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 140%;
+        letter-spacing: 0.02em;
+        color: #1F1F1F;
+    }
+
+    &__li-disc {
+        margin-bottom: 16px;
+        color: #009B3E;
+    }
+
+    &__text-ul {
+        padding-left: 16px;
+        list-style: disc;
+    }
+
+    &__li-text {
+        color: #2B2B2B;
+    }
+
+    &__text-ul-wrp {
+        margin-bottom: 24px;
+    }
+}
